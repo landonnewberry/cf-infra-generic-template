@@ -8,9 +8,7 @@ phases:
     commands:
       - echo "Creating role for spinning up resources. Role defined in creation-iam.yml"
       - aws cloudformation deploy --template-file creation-iam.yml --stack-name cf-infra-generic-test-creation-iam --capabilities CAPABILITY_IAM
-      - echo "Created the role"
       - echo $(aws cloudformation describe-stacks --stack-name cf-infra-generic-test-creation-iam) > stack_info.json
-      - cat stack_info.json
   build:
     commands:
       - aws cloudformation deploy --template-file template.yml --stack-name cf-infra-generic-test --role-arn $(python get_creation_role_arn.py)

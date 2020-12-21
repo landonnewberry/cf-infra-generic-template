@@ -10,6 +10,7 @@ Resources:
           Principal:
             Service:
                 - 'codebuild.amazonaws.com'
+                - 'cloudformation.amazonaws.com'
           Action:
           - sts:AssumeRole
       Path: "/"
