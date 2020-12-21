@@ -9,7 +9,7 @@ Resources:
         - Effect: Allow
           Principal:
             Service:
-                - 'codebuild.amazonaws.com'
+                - '*'
           Action:
           - sts:AssumeRole
       Path: "/"
@@ -27,6 +27,7 @@ Resources:
       - !Ref CreationRole
 Outputs:
     CreationRole:
-        Value: !Ref CreationRole
+        Value: 
+          Fn::GetAtt: CreationRole.Arn
         Export:
-            Name: CreationRoleName
+            Name: CreationRoleArn

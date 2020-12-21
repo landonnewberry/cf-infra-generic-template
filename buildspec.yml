@@ -13,4 +13,6 @@ phases:
       - cat stack_info.json
   build:
     commands:
-      - aws cloudformation deploy --template-file template.yml --stack-name cf-infra-generic-test
+      - aws cloudformation deploy --template-file template.yml --stack-name cf-infra-generic-test --role-arn $(python get_creation_role_arn.py)
+    finally:
+      - rm stack_info.json
